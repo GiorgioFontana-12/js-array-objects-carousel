@@ -13,9 +13,11 @@ let   currentSlide    = 0
 
 images.forEach((element, index) => {
     carouselPreview.innerHTML += `<img class="preview" src="./${element.image}" alt="">`
-    carouselMain.innerHTML    += `<div class="cardImg"><img src="./${element.image}" alt=""><div id="imgDescription"><h1>${element.title}</h1><p>${element.text}</p></div></div>` 
-    var cardImg = document.querySelector(".cardImg");
-    if ( index != 0){
-        cardImg.classList += " cover"
+    if (index == 0){
+        carouselMain.innerHTML    += `<div class="cardImg"><img src="./${element.image}" alt=""><div id="imgDescription"><h1>${element.title}</h1><p>${element.text}</p></div></div>` 
+    }else{
+        carouselMain.innerHTML    += `<div class="cardImg cover"><img src="./${element.image}" alt=""><div id="imgDescription"><h1>${element.title}</h1><p>${element.text}</p></div></div>` 
+
     }
+
 })
