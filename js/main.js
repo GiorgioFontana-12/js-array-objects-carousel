@@ -9,7 +9,9 @@ const carouselPreview = document.getElementById("carouselPreview")
 const carouselMain    = document.getElementById("carouselMain")
 const buttonUp        = document.getElementById("imgUp")
 const buttonDown      = document.getElementById("imgDown")
-let   currentSlide    = 0
+
+let slideElements = document.getElementsByClassName("cardImg");
+let currentSlide = 0;
 
 images.forEach((element, index) => {
     carouselPreview.innerHTML += `<img class="preview" src="./${element.image}" alt="">`
@@ -21,3 +23,31 @@ images.forEach((element, index) => {
     }
 
 })
+
+buttonUp.addEventListener("click", function(){
+
+    console.log("Current Slide: ", currentSlide);
+
+    if(currentSlide < images.length-1) {
+        for (let c = 0; c < images.length; c++) {
+            const slide = slideElements[c];
+
+            if(c == currentSlide+1 ) {
+                slide.classList.remove("cover");
+            } else {
+                slide.classList.add("cover");
+            }
+        }
+        
+        currentSlide++;
+    } else {
+        let lastSlide = slideElements [images.length-1]
+        lastSlide.classList.add("cover");
+        let firstSlide =  slideElements [0]
+        firstSlide.classList.remove("cover");
+        currentSlide = 0
+
+
+    }
+    
+});
