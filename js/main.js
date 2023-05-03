@@ -7,8 +7,6 @@ const images = [
 
 const carouselPreview = document.getElementById("carouselPreview")
 const carouselMain    = document.getElementById("carouselMain")
-const buttonUp        = document.getElementById("imgUp")
-const buttonDown      = document.getElementById("imgDown")
 
 let slideElements = document.getElementsByClassName("cardImg");
 let currentSlide = 0;
@@ -19,13 +17,16 @@ images.forEach((element, index) => {
         carouselMain.innerHTML    += `<div class="cardImg"><img src="./${element.image}" alt=""><div id="imgDescription"><h1>${element.title}</h1><p>${element.text}</p></div></div>` 
     }else{
         carouselMain.innerHTML    += `<div class="cardImg cover"><img src="./${element.image}" alt=""><div id="imgDescription"><h1>${element.title}</h1><p>${element.text}</p></div></div>` 
-
+        
     }
-
+    
 })
 
-buttonUp.addEventListener("click", function(){
+const buttonUp   = document.getElementById("imgUp")
+const buttonDown = document.getElementById("imgDown")
 
+buttonDown.addEventListener("click", function(){
+    
     console.log("Current Slide: ", currentSlide);
 
     if(currentSlide < images.length-1) {
@@ -46,8 +47,33 @@ buttonUp.addEventListener("click", function(){
         let firstSlide =  slideElements [0]
         firstSlide.classList.remove("cover");
         currentSlide = 0
-
-
     }
-    
+});
+
+
+buttonUp.addEventListener("click", function(){
+
+    console.log("Current Slide: ", currentSlide);
+
+
+    if(currentSlide>0) {
+        for (let c = 0; c < slideElements.length; c++) {
+                const slide = slideElements[c];
+
+            if(c == currentSlide-1 ) {
+                slide.classList.remove("cover");
+            } else {
+                slide.classList.add("cover");
+            }
+        }
+        
+        currentSlide--;
+    } else {
+        let lastSlide = slideElements [images.length-1]
+        let firstSlide =  slideElements [0]
+        firstSlide.classList.add("cover");
+        lastSlide.classList.remove("cover");
+        currentSlide = images.length-1
+    }
+
 });
