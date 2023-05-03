@@ -22,7 +22,16 @@ const images = [
     }
 ];
 const carouselPreview = document.getElementById("carouselPreview")
+const carouselMain = document.getElementById("carouselMain")
+const buttonUp = document.getElementById("imgUp")
+const buttonDown = document.getElementById("imgDown")
+let currentSlide = 0
+images.forEach((element, index) => {
+    carouselPreview.innerHTML += `<img class="preview" src="./${element.image}" alt="">`
+    carouselMain.innerHTML +=`<div id="cardImg"><img src="./${element.image}" alt=""><div id="imgDescription"><h1>${element.title}</h1><p>${element.text}</p></div></div>` 
+    // var cardImg = getElementById("cardImg")
+    // if ( index != 0){
+    //     cardImg.classList += "cover"
+    // }
 
-images.forEach((element) => {
-    carouselPreview.innerHTML += `<img src="./${element.image}" alt="">`
 })
