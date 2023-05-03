@@ -23,7 +23,7 @@
     display: none;
 }
 
-#cardImg{
+.cardImg{
     height: 100%;
     width: 100%;
 }
